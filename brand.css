@@ -151,7 +151,7 @@ body:has(#overviewView.active) .topbar h1{font-size:30px;letter-spacing:-.035em}
 #overviewView .metric small{font-size:12px;bottom:20px}
 
 /* Monthly reporting filter */
-.report-period{height:42px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:5px 10px 5px 12px;display:flex;align-items:center;gap:9px;white-space:nowrap}.report-period span{font-size:12px;color:#68766f}.report-period select{border:0;background:transparent;color:#17211c;font:600 13px "Be Vietnam Pro",sans-serif;outline:none;cursor:pointer}
+.report-period{height:42px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:5px 10px 5px 12px;display:flex;align-items:center;gap:9px;white-space:nowrap}.report-period span{font-size:12px;line-height:1;color:#68766f}.report-period select{-webkit-appearance:none;appearance:none;border:0;background:transparent;color:#17211c;font:600 13px "Be Vietnam Pro",sans-serif;line-height:1;padding:0 16px 0 0;margin:0;outline:none;cursor:pointer;background-repeat:no-repeat;background-position:right center;background-size:10px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='m1 1 4 4 4-4' fill='none' stroke='%2317211c' stroke-width='1.5'/%3E%3C/svg%3E")}
 @media(max-width:900px){.report-period span{display:none}.report-period{padding-left:7px}}
 @media(max-width:700px){.report-period{height:40px}.report-period select{font-size:11px}}
 
