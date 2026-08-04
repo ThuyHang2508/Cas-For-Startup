@@ -11,6 +11,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="brand.css" />
+  <style>
+    body.locked .sidebar, body.locked main { display: none; }
+    #authGate { position: fixed; inset: 0; z-index: 999; display: flex; align-items: center; justify-content: center; background: #f4f7f5; }
+    .auth-card { width: min(360px, 90vw); background: #fff; border: 1px solid #e1e8e4; border-radius: 16px; padding: 32px 28px; box-shadow: 0 16px 44px rgba(0,60,34,.08); display: flex; flex-direction: column; gap: 14px; }
+    .auth-logo { width: 40px; margin-bottom: 4px; }
+    .auth-card h1 { font-size: 18px; margin: 0 0 6px; }
+    .auth-card label { font-size: 13px; color: #68736d; display: flex; flex-direction: column; gap: 6px; }
+    .auth-card input { font-size: 14px; padding: 10px 12px; border: 1px solid #e1e8e4; border-radius: 8px; }
+    .auth-error { color: #d02f2f; font-size: 13px; min-height: 16px; margin: 0; }
+  </style>
 </head>
 <body>
   <aside class="sidebar">
@@ -137,7 +147,6 @@
     </form>
   </dialog>
   <div class="toast" id="toast">Đã lưu thay đổi</div>
-  <script src="sheets-config.js?v=20260804-13"></script>
-  <script src="app.js?v=20260804-13"></script>
+  <script src="auth.js?v=20260804-13"></script>
 </body>
 </html>
