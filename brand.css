@@ -210,5 +210,33 @@ body:has(#overviewView.active) .topbar h1{font-size:30px;letter-spacing:-.035em}
 .deal-card{cursor:pointer}.deal-card.dragging{cursor:grabbing}.summary-dialog{width:min(720px,calc(100% - 30px));max-height:88vh}.summary-shell{padding:26px}.summary-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:18px;border-bottom:1px solid #e7ece9}.summary-head h2{font-size:23px;line-height:1.35;margin-top:7px}.summary-status{display:flex;justify-content:space-between;align-items:center;gap:15px;background:var(--soft);border-left:4px solid var(--tone);border-radius:0 10px 10px 0;padding:12px 14px;margin-top:18px}.summary-status span{color:var(--tone);font-size:13px;font-weight:700}.summary-status small{color:#64746c;font-size:11px}.summary-highlight{background:#f5f8f6;border-radius:11px;padding:16px;margin-top:14px}.summary-highlight label,.summary-note label,.summary-grid label{display:block;color:#819089;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}.summary-highlight p,.summary-note p{color:#2d3d35;font-size:13px;line-height:1.7;margin:8px 0 0}.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e6ece9;border:1px solid #e6ece9;border-radius:11px;overflow:hidden;margin-top:14px}.summary-grid>div{background:#fff;padding:14px 16px;min-width:0}.summary-grid b{display:block;color:#26352e;font-size:12px;line-height:1.5;margin-top:6px;overflow-wrap:anywhere}.summary-note{border-top:1px solid #e8edea;padding-top:14px;margin-top:14px}.summary-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.summary-links a{background:#eaf7f0;border:1px solid #cde8da;border-radius:8px;color:#087747;text-decoration:none;font-size:11px;font-weight:600;padding:8px 11px}.summary-links a:hover{background:#dcf2e7}.summary-actions{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid #e7ece9;margin-top:20px;padding-top:18px}.summary-actions small{color:#829089;font-size:10px}
 @media(max-width:600px){.summary-shell{padding:20px}.summary-grid{grid-template-columns:1fr}.summary-actions{align-items:stretch;flex-direction:column}.summary-actions .btn{width:100%}}
 
+/* Larger pipeline card typography */
+#pipelineView .kanban-col .col-head b{font-size:15px}#pipelineView .kanban-col .col-head small{font-size:12px}
+#pipelineView .col-actions>span{font-size:12px;width:28px;height:28px}
+#pipelineView .deal-card h3{font-size:15px;line-height:1.4;max-width:220px}
+#pipelineView .deal-card p{font-size:13px;line-height:1.6}
+#pipelineView .deal-meta{font-size:12px}#pipelineView .deal-meta>span:first-child{max-width:140px}
+#pipelineView .source-badge{font-size:11px}
+#pipelineView .deal-stage{font-size:12px}
+.qualification-tag{font-size:11px}
+.qualification-select{font-size:11px}
+.qualification-select.potential{width:88px}.qualification-select.not-potential{width:126px}.qualification-select.unrated{width:116px}
+
+/* Collapsible sidebar */
+.sidebar{position:fixed}
+.sidebar-toggle{position:absolute;top:32px;right:-13px;width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.12);z-index:11;color:#4f5f57;padding:0}
+.sidebar-toggle svg{width:14px;height:14px}
+.sidebar-toggle:hover{border-color:#00a85e;color:#00a85e}
+.sidebar-toggle.collapsed svg{transform:rotate(180deg)}
+body.sidebar-collapsed .sidebar{width:76px;padding:26px 14px;align-items:center}
+body.sidebar-collapsed .brand{justify-content:center}
+body.sidebar-collapsed .brand img{width:36px}
+body.sidebar-collapsed .nav-item{justify-content:center;padding:14px}
+body.sidebar-collapsed .nav-item b{display:none}
+body.sidebar-collapsed .sidebar-foot{justify-content:center}
+body.sidebar-collapsed .sidebar-foot>div:last-child{display:none}
+body.sidebar-collapsed main{margin-left:76px}
+@media(max-width:1050px){.sidebar-toggle{display:none}}
+
 /* Printable monthly report */
 @media print{body{background:#fff!important}.sidebar,.top-actions,.text-btn,.export-btn{display:none!important}main{margin:0!important;padding:18px!important;background:#fff!important}.topbar{margin-bottom:18px!important}.view{display:none!important}#overviewView.active{display:block!important}#overviewView .hero-grid{grid-template-columns:repeat(3,1fr)!important}#overviewView .hero-card,#overviewView .metric,#overviewView .panel,.conversion-card{box-shadow:none!important;break-inside:avoid}.recent-panel{break-inside:avoid}.page-subtitle{color:#555!important}}
