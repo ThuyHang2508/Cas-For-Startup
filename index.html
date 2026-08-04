@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>CAS Startup CRM</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="brand.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="CAS CRM"><img src="logo.svg" alt="CAS" /></a>
+    <nav aria-label="Điều hướng chính">
+      <button class="nav-item active" data-view="overview" title="Tổng quan"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg></span><b>Tổng quan</b></button>
+      <button class="nav-item" data-view="pipeline" title="Pipeline"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h4v14H4V5Zm6 0h4v14h-4V5Zm6 0h4v14h-4V5Z"/></svg></span><b>Pipeline</b></button>
+      <button class="nav-item" data-view="customers" title="Khách hàng"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 1c-2.67 0-8 1.34-8 4v3h12v-3c0-2.66-2.67-4-4-4ZM8 14c-3.11 0-6 1.56-6 4v2h4v-3c0-1.13.44-2.11 1.18-2.93C7.45 14.03 7.73 14 8 14Z"/></svg></span><b>Khách hàng</b></button>
+      <button class="nav-item" data-view="report" title="Báo cáo tháng"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6V2Zm8 2v4h4l-4-4ZM9 12h8v-2H9v2Zm0 4h8v-2H9v2Zm0 4h6v-2H9v2Z"/></svg></span><b>Báo cáo tháng</b></button>
+    </nav>
+    <div class="sidebar-foot"><div class="avatar">TH</div><div><b>Thuý Hằng</b><small>CAS Growth</small></div></div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">CAS FOR STARTUP · CRM</div>
+        <h1 id="pageTitle">Tổng quan CAS for Startup</h1>
+        <p class="page-subtitle" id="pageSubtitle">Báo cáo tình hình khách hàng theo kỳ đã chọn.</p>
+      </div>
+      <div class="top-actions">
+        <label class="report-period"><span>Kỳ báo cáo</span><select id="monthFilter" aria-label="Chọn tháng báo cáo"></select></label>
+        <label class="search"><span>⌕</span><input id="searchInput" placeholder="Tìm startup, người liên hệ..." /></label>
+        <button class="btn primary" id="addCustomerBtn"><span>＋</span> Thêm khách hàng</button>
+      </div>
+    </header>
+
+    <section id="overviewView" class="view active">
+      <div class="period-row"><div><span class="live-dot"></span><span id="syncStatus">Đang kiểm tra dữ liệu dùng chung...</span></div></div>
+      <div class="hero-grid">
+        <article class="hero-card">
+          <div class="hero-label">Tổng khách hàng</div>
+          <div class="hero-number"><span id="totalLeads">0</span><small>startup</small></div>
+          <div class="hero-foot"><span class="up">●</span><span id="totalTrend">Trong thời gian đang chọn</span></div>
+          <div class="orbit"><i></i><i></i><i></i></div>
+        </article>
+        <div class="metric-grid" id="metricGrid"></div>
+      </div>
+      <div class="conversion-grid" id="conversionGrid"></div>
+
+      <div class="content-grid">
+        <article class="panel funnel-panel">
+          <div class="panel-head"><div><div class="panel-kicker">SỨC KHOẺ PIPELINE</div><h2>Từ quan tâm đến Go-live</h2></div><button class="text-btn" data-go="pipeline">Xem pipeline →</button></div>
+          <div class="funnel" id="funnel"></div>
+        </article>
+        <article class="panel source-panel">
+          <div class="panel-head"><div><div class="panel-kicker">NGUỒN KHÁCH HÀNG</div><h2>Họ biết CAS từ đâu?</h2></div></div>
+          <div class="source-chart"><div class="donut" id="sourceDonut"><div><b id="donutTotal">0</b><span>Leads</span></div></div><div class="legend" id="sourceLegend"></div></div>
+        </article>
+      </div>
+
+      <article class="panel recent-panel">
+        <div class="panel-head"><div><div class="panel-kicker">CẦN CHÚ Ý</div><h2>Khách hàng cần follow-up</h2></div><button class="text-btn" data-go="customers">Xem tất cả →</button></div>
+        <div class="recent-list" id="followupList"></div>
+      </article>
+    </section>
+
+    <section id="reportView" class="view">
+      <div class="report-intro">
+        <span class="report-intro-icon">✦</span>
+        <div><b>Bản nhận định dành cho quản lý</b><p>Hệ thống tổng hợp số liệu trong kỳ thành bản nháp; bạn rà soát, bổ sung bối cảnh rồi lưu để chia sẻ.</p></div>
+      </div>
+      <article class="monthly-brief panel">
+        <div class="brief-marker"><span>CAS</span><b id="briefMonth">07</b></div>
+        <div class="brief-content">
+          <div class="brief-head">
+            <div><div class="panel-kicker">TÓM TẮT ĐIỀU HÀNH</div><h2>Nhận định trong tháng</h2></div>
+            <span class="brief-state" id="briefState">Đã lưu</span>
+          </div>
+          <textarea id="monthlyReport" rows="8" placeholder="Viết tóm tắt kết quả, khách hàng nổi bật và việc cần làm tiếp theo trong tháng..."></textarea>
+          <div class="brief-foot"><small>Nội dung được lưu riêng theo kỳ báo cáo đang chọn.</small><div class="brief-actions"><button class="btn brief-draft" id="generateMonthlyReport"><span>✦</span> Soạn nhận định</button><button class="btn primary brief-save" id="saveMonthlyReport">Lưu nhận định</button></div></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="pipelineView" class="view">
+      <div class="pipeline-toolbar"><div><span class="live-dot"></span><b id="pipelineCount">0 cơ hội</b> trong pipeline</div></div>
+      <div class="kanban" id="kanban"></div>
+    </section>
+
+    <section id="customersView" class="view">
+      <article class="panel table-panel"><div class="panel-head"><div><div class="panel-kicker">TOÀN BỘ DỮ LIỆU</div><h2>Danh sách khách hàng</h2></div><span class="table-count" id="tableCount"></span></div>
+        <div class="table-wrap"><table><thead><tr><th>Startup</th><th>Liên hệ</th><th>Nguồn</th><th>Trạng thái</th><th>Ngày tạo</th><th>Phụ trách</th><th></th></tr></thead><tbody id="customerTable"></tbody></table></div>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="summaryDialog" class="summary-dialog">
+    <div class="summary-shell">
+      <div class="summary-head"><div><div class="panel-kicker">TÓM TẮT KHÁCH HÀNG</div><h2 id="summaryCompany"></h2></div><button type="button" class="icon-btn" id="closeSummary">×</button></div>
+      <div id="summaryBody"></div>
+      <div class="summary-actions"><small>Để chỉnh sửa thông tin, vào mục Khách hàng.</small><button type="button" class="btn primary" id="summaryToCustomers">Xem trong Khách hàng</button></div>
+    </div>
+  </dialog>
+
+  <dialog id="customerDialog">
+    <form id="customerForm" method="dialog">
+      <div class="dialog-head"><div><div class="panel-kicker">HỒ SƠ KHÁCH HÀNG</div><h2 id="dialogTitle">Thêm startup mới</h2></div><button type="button" class="icon-btn" id="closeDialog">×</button></div>
+      <input type="hidden" id="customerId" />
+      <div class="form-grid">
+        <label class="full">Tên startup *<input id="company" required placeholder="VD: FinanFlow" /></label>
+        <label>Người liên hệ *<input id="contact" required placeholder="Nguyễn Minh Anh" /></label>
+        <label>Số điện thoại<input id="phone" placeholder="09xx xxx xxx" /></label>
+        <label>Email<input id="email" type="email" placeholder="hello@startup.vn" /></label>
+        <label>Mã số thuế<input id="taxId" placeholder="Mã số thuế doanh nghiệp" /></label>
+        <label class="full">Website doanh nghiệp<input id="website" type="url" placeholder="https://tenmien.vn" /></label>
+        <label>Nguồn lead<select id="source"><option>Website</option><option>Facebook Ads</option><option>Giới thiệu</option></select></label>
+        <label>Ngày liên hệ *<input id="created" type="date" required /></label>
+        <label>Trạng thái<select id="status"></select></label>
+        <label>Đánh giá<select id="qualification"><option value="unrated">Chưa đánh giá</option><option value="potential">Tiềm năng</option><option value="not-potential">Không tiềm năng</option></select></label>
+        <label>Người phụ trách<input id="owner" value="Thuý Hằng" /></label>
+        <label>Ngày follow-up<input id="followup" type="date" /></label>
+        <label class="full">API quan tâm<input id="apiInterest" placeholder="QR Pay, Transactions, Virtual Account..." /></label>
+        <label class="full">Sản phẩm / website<input id="product" placeholder="Mô tả ngắn về sản phẩm và website" /></label>
+        <label>Link hợp đồng<input id="contractLink" type="url" placeholder="https://drive.google.com/..." /></label>
+        <label>Link phụ lục<input id="appendixLink" type="url" placeholder="https://drive.google.com/..." /></label>
+        <label class="full">Ghi chú<textarea id="note" rows="3" placeholder="Nhu cầu, tình hình trao đổi, bước tiếp theo..."></textarea></label>
+      </div>
+      <section class="history-section" id="historySection">
+        <div class="history-title"><b>Lịch sử thay đổi trạng thái</b><span>Đồng bộ từ Google Sheets</span></div>
+        <div class="history-list" id="statusHistory"></div>
+      </section>
+      <div class="dialog-actions"><button type="button" class="btn danger" id="deleteCustomerBtn">Xoá khách hàng</button><span class="dialog-spacer"></span><button type="button" class="btn ghost" id="cancelDialog">Huỷ</button><button class="btn primary" value="default">Lưu khách hàng</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast">Đã lưu thay đổi</div>
+  <script src="sheets-config.js?v=20260804-13"></script>
+  <script src="app.js?v=20260804-13"></script>
+</body>
+</html>
